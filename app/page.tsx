@@ -13,8 +13,9 @@ import {
   UserGroupIcon
 } from "@heroicons/react/24/solid";
 
-// ⚠️ غيّر الرقم ده لرقم الوكالة الحقيقي على الواتساب (بدون +)
-const AGENCY_WHATSAPP_NUMBER = "201000000000"; 
+
+const AGENCY_WHATSAPP_NUMBER = "+2001505717333";
+const AGENCY_WHATSAPP_NUMBER_2 = "+201034971059";
 
 interface Trip {
   id: string;
@@ -27,19 +28,19 @@ interface Trip {
 }
 
 const TRIPS_DATA: Trip[] = [
-  { id: "1", from: "أسوان / القاهرة", to: "ارقين", price: 1200, busType: "سياحي مكيف", availableSeats: 8, features: ['تكييف', 'شاحن'] },
-  { id: "2", from: "القاهرة / أسوان", to: "دنقلا", price: 2300, busType: "VIP ممتاز", availableSeats: 6, features: ['WiFi', 'تكييف', 'شاحن'] },
-  { id: "3", from: "القاهرة / أسوان", to: "عطبره", price: 2900, busType: "VIP فخم", availableSeats: 5, features: ['WiFi', 'تكييف', 'قهوة', 'شاحن'] },
-  { id: "4", from: "القاهرة / أسوان", to: "امدرمان", price: 2900, busType: "VIP فخم", availableSeats: 4, features: ['WiFi', 'تكييف', 'شاحن'] },
-  { id: "5", from: "القاهرة / أسوان", to: "الخرطوم", price: 2900, busType: "VIP فخم", availableSeats: 4, features: ['WiFi', 'تكييف', 'شاحن'] },
-  { id: "6", from: "القاهرة / أسوان", to: "مدني", price: 3500, busType: "VIP فخم", availableSeats: 7, features: ['WiFi', 'تكييف', 'قهوة', 'شاحن'] },
-  { id: "7", from: "القاهرة / أسوان", to: "بورتسودان", price: 3800, busType: "VIP درجه أولي", availableSeats: 3, features: ['WiFi', 'تكييف', 'قهوة', 'شاحن', 'ماء'] },
-  { id: "8", from: "القاهرة / أسوان", to: "القضارف", price: 4200, busType: "VIP ممتاز", availableSeats: 5, features: ['WiFi', 'تكييف', 'شاحن'] },
-  { id: "9", from: "القاهرة / أسوان", to: "كسلا", price: 4000, busType: "VIP ممتاز", availableSeats: 6, features: ['WiFi', 'تكييف', 'شاحن'] },
-  { id: "10", from: "القاهرة / أسوان", to: "سنار", price: 4300, busType: "VIP ممتاز", availableSeats: 4, features: ['WiFi', 'تكييف', 'شاحن'] },
-  { id: "11", from: "القاهرة / أسوان", to: "سنجة", price: 4400, busType: "سياحي مكيف", availableSeats: 5, features: ['تكييف', 'شاحن'] },
-  { id: "12", from: "القاهرة / أسوان", to: "الابيض", price: 4400, busType: "سياحي مكيف", availableSeats: 6, features: ['تكييف', 'شاحن'] },
-  { id: "13", from: "القاهرة / أسوان", to: "الدمازين", price: 5200, busType: "VIP ممتاز", availableSeats: 3, features: ['WiFi', 'تكييف', 'قهوة', 'شاحن'] },
+  { id: "1", from: "  القاهرة", to: "ارقين", price: 1200, busType: "سياحي مكيف", availableSeats: 8, features: ['تكييف', 'شاحن'] },
+  { id: "2", from: " القاهرة", to: "دنقلا", price: 2300, busType: "VIP ممتاز", availableSeats: 6, features: ['WiFi', 'تكييف', 'شاحن'] },
+  { id: "3", from: " القاهرة", to: "عطبره", price: 2900, busType: "VIP فخم", availableSeats: 5, features: ['WiFi', 'تكييف', 'قهوة', 'شاحن'] },
+  { id: "4", from: " القاهرة", to: "امدرمان", price: 2900, busType: "VIP فخم", availableSeats: 4, features: ['WiFi', 'تكييف', 'شاحن'] },
+  { id: "5", from: " القاهرة", to: "الخرطوم", price: 2900, busType: "VIP فخم", availableSeats: 4, features: ['WiFi', 'تكييف', 'شاحن'] },
+  { id: "6", from: " القاهرة", to: "مدني", price: 3500, busType: "VIP فخم", availableSeats: 7, features: ['WiFi', 'تكييف', 'قهوة', 'شاحن'] },
+  { id: "7", from: " القاهرة", to: "بورتسودان", price: 3800, busType: "VIP درجه أولي", availableSeats: 3, features: ['WiFi', 'تكييف', 'قهوة', 'شاحن', 'ماء'] },
+  { id: "8", from: " القاهرة", to: "القضارف", price: 4200, busType: "VIP ممتاز", availableSeats: 5, features: ['WiFi', 'تكييف', 'شاحن'] },
+  { id: "9", from: " القاهرة", to: "كسلا", price: 4000, busType: "VIP ممتاز", availableSeats: 6, features: ['WiFi', 'تكييف', 'شاحن'] },
+  { id: "10", from: " القاهرة", to: "سنار", price: 4300, busType: "VIP ممتاز", availableSeats: 4, features: ['WiFi', 'تكييف', 'شاحن'] },
+  { id: "11", from: " القاهرة", to: "سنجة", price: 4400, busType: "سياحي مكيف", availableSeats: 5, features: ['تكييف', 'شاحن'] },
+  { id: "12", from: " القاهرة", to: "الابيض", price: 4400, busType: "سياحي مكيف", availableSeats: 6, features: ['تكييف', 'شاحن'] },
+  { id: "13", from: " القاهرة", to: "الدمازين", price: 5200, busType: "VIP ممتاز", availableSeats: 3, features: ['WiFi', 'تكييف', 'قهوة', 'شاحن'] },
 ];
 
 export default function Home() {
@@ -63,7 +64,7 @@ export default function Home() {
       trip.to.includes(searchQuery)
   );
 
-  const handleBooking = (e: React.FormEvent) => {
+  const handleBooking = (e: React.FormEvent, number: string) => {
     e.preventDefault();
     if (!selectedTrip) return;
 
@@ -76,7 +77,7 @@ export default function Home() {
 👥 *عدد التذاكر:* ${passengers}
 💰 *إجمالي التكلفة:* ${selectedTrip.price * passengers} جنيه مصري`;
 
-    window.open(`https://wa.me/${AGENCY_WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`, "_blank");
+    window.open(`https://wa.me/${number}?text=${encodeURIComponent(message)}`, "_blank");
     setSelectedTrip(null);
     setName("");
     setPhone("");
@@ -203,7 +204,7 @@ export default function Home() {
               رحلة إلى <span className="text-amber-400 font-bold">{selectedTrip.to}</span> بسعر <span className="text-emerald-400 font-bold">{selectedTrip.price} ج.م</span>
             </p>
 
-            <form onSubmit={handleBooking} className="space-y-4">
+            <form onSubmit={(e) => handleBooking(e, AGENCY_WHATSAPP_NUMBER)} className="space-y-4">
               <div>
                 <label className="block text-xs font-bold text-slate-300 mb-1.5">الاسم بالكامل</label>
                 <div className="relative">
