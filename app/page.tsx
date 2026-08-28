@@ -14,8 +14,16 @@ import {
 } from "@heroicons/react/24/solid";
 
 
-const AGENCY_WHATSAPP_NUMBER = "+2001505717333";
-const AGENCY_WHATSAPP_NUMBER_2 = "+201034971059";
+const AGENCY_WHATSAPP_NUMBERS = ["2001505717333", "201034971059"];
+
+const sendToWhatsApp = (bookingDetailsMessage: string) => {
+  // Randomly select one of the two numbers for each booking
+  const randomIndex = Math.floor(Math.random() * AGENCY_WHATSAPP_NUMBERS.length);
+  const selectedNumber = AGENCY_WHATSAPP_NUMBERS[randomIndex];
+  const encodedMessage = encodeURIComponent(bookingDetailsMessage);
+  const whatsappUrl = `https://wa.me/${selectedNumber}?text=${encodedMessage}`;
+  window.open(whatsappUrl, "_blank");
+};
 
 interface Trip {
   id: string;
@@ -64,7 +72,7 @@ export default function Home() {
       trip.to.includes(searchQuery)
   );
 
-  const handleBooking = (e: React.FormEvent, number: string) => {
+  const handleBooking = (e: React.FormEvent) => {
     e.preventDefault();
     if (!selectedTrip) return;
 
@@ -77,7 +85,7 @@ export default function Home() {
 👥 *عدد التذاكر:* ${passengers}
 💰 *إجمالي التكلفة:* ${selectedTrip.price * passengers} جنيه مصري`;
 
-    window.open(`https://wa.me/${number}?text=${encodeURIComponent(message)}`, "_blank");
+    sendToWhatsApp(message);
     setSelectedTrip(null);
     setName("");
     setPhone("");
@@ -204,7 +212,7 @@ export default function Home() {
               رحلة إلى <span className="text-amber-400 font-bold">{selectedTrip.to}</span> بسعر <span className="text-emerald-400 font-bold">{selectedTrip.price} ج.م</span>
             </p>
 
-            <form onSubmit={(e) => handleBooking(e, AGENCY_WHATSAPP_NUMBER)} className="space-y-4">
+            <form onSubmit={handleBooking} className="space-y-4">
               <div>
                 <label className="block text-xs font-bold text-slate-300 mb-1.5">الاسم بالكامل</label>
                 <div className="relative">
@@ -268,7 +276,7 @@ export default function Home() {
 
       {/* Floating WhatsApp Button */}
       <a 
-        href={`https://wa.me/${AGENCY_WHATSAPP_NUMBER}`}
+        href={`https://wa.me/${AGENCY_WHATSAPP_NUMBERS[0]}`}
         target="_blank" 
         rel="noreferrer"
         className="fixed bottom-6 left-6 z-40 bg-emerald-600 hover:bg-emerald-500 text-white p-3.5 rounded-full shadow-2xl flex items-center gap-2 transition transform hover:scale-105"
