@@ -58,6 +58,7 @@ export default function Home() {
   const [phone, setPhone] = useState("");
   const [passengers, setPassengers] = useState(1);
   const [copied, setCopied] = useState(false);
+  const [travelDate, setTravelDate] = useState(() => new Date().toISOString().split("T")[0]);
 
   const handleCopyNumber = () => {
     navigator.clipboard.writeText(VODAFONE_CASH_NUMBER);
@@ -87,7 +88,8 @@ export default function Home() {
 حابب أأكد حجز رحلة جديدة:
 
 📌 *الوجهة:* من ${selectedTrip.from} إلى ${selectedTrip.to}
-👤 *الاسم:* ${name}
+� *تاريخ السفر:* ${travelDate}
+�👤 *الاسم:* ${name}
 📞 *الواتساب:* ${phone}
 👥 *عدد التذاكر:* ${passengers}
 💰 *إجمالي التكلفة:* ${selectedTrip.price * passengers} جنيه مصري
@@ -98,6 +100,7 @@ export default function Home() {
     setName("");
     setPhone("");
     setPassengers(1);
+    setTravelDate(new Date().toISOString().split("T")[0]);
   };
 
   return (
@@ -263,6 +266,44 @@ export default function Home() {
                     onChange={(e) => setPassengers(Number(e.target.value))}
                     className="w-full bg-slate-900 border border-slate-700 rounded-xl pr-10 pl-3 py-2.5 text-sm text-white focus:outline-none focus:border-amber-500"
                   />
+                </div>
+              </div>
+
+              {/* Travel Date */}
+              <div>
+                <label className="block text-xs font-bold text-slate-300 mb-1.5">تاريخ السفر</label>
+                <div className="relative">
+                  <svg className="w-4 h-4 text-slate-500 absolute right-3 top-1/2 -translate-y-1/2 pointer-events-none" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                  </svg>
+                  <input
+                    type="date"
+                    required
+                    value={travelDate}
+                    min={new Date().toISOString().split("T")[0]}
+                    onChange={(e) => setTravelDate(e.target.value)}
+                    className="w-full bg-slate-900 border border-slate-700 rounded-xl pr-10 pl-3 py-2.5 text-sm text-white focus:outline-none focus:border-amber-500 [color-scheme:dark]"
+                  />
+                </div>
+              </div>
+
+              {/* Schedule Notice */}
+              <div className="rounded-2xl border border-amber-500/30 bg-amber-500/5 p-4">
+                <div className="flex items-center gap-2 mb-3">
+                  <span className="text-base">🕐</span>
+                  <h4 className="text-xs font-black text-amber-400 uppercase tracking-wide">مواعيد الرحلة</h4>
+                </div>
+                <div className="grid grid-cols-2 gap-3">
+                  <div className="bg-[#0b0f19] border border-slate-700 rounded-xl p-3 text-center">
+                    <p className="text-xs text-slate-400 mb-1">الحضور</p>
+                    <p className="text-lg font-black text-amber-400">3:00 م</p>
+                    <p className="text-[10px] text-slate-500 mt-0.5">Assembly Time</p>
+                  </div>
+                  <div className="bg-[#0b0f19] border border-slate-700 rounded-xl p-3 text-center">
+                    <p className="text-xs text-slate-400 mb-1">القيام</p>
+                    <p className="text-lg font-black text-emerald-400">6:00 م</p>
+                    <p className="text-[10px] text-slate-500 mt-0.5">Departure Time</p>
+                  </div>
                 </div>
               </div>
 
