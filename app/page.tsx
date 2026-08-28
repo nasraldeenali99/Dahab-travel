@@ -14,7 +14,15 @@ import {
 } from "@heroicons/react/24/solid";
 
 
-const AGENCY_WHATSAPP_NUMBER = "+201034971059";
+const AGENCY_WHATSAPP_NUMBERS = ["2001505717333", "201034971059"];
+const VODAFONE_CASH_NUMBER = "01034971059";
+
+const sendToWhatsApp = (bookingDetailsMessage: string) => {
+  const randomIndex = Math.floor(Math.random() * AGENCY_WHATSAPP_NUMBERS.length);
+  const selectedNumber = AGENCY_WHATSAPP_NUMBERS[randomIndex];
+  const encodedMessage = encodeURIComponent(bookingDetailsMessage);
+  window.open(`https://wa.me/${selectedNumber}?text=${encodedMessage}`, "_blank");
+};
 
 
 interface Trip {
@@ -49,6 +57,13 @@ export default function Home() {
   const [name, setName] = useState("");
   const [phone, setPhone] = useState("");
   const [passengers, setPassengers] = useState(1);
+  const [copied, setCopied] = useState(false);
+
+  const handleCopyNumber = () => {
+    navigator.clipboard.writeText(VODAFONE_CASH_NUMBER);
+    setCopied(true);
+    setTimeout(() => setCopied(false), 2000);
+  };
 
   const featureIcons: { [key: string]: JSX.Element } = {
     'WiFi': <WifiIcon className="w-4 h-4 text-sky-400" />,
@@ -64,7 +79,7 @@ export default function Home() {
       trip.to.includes(searchQuery)
   );
 
-  const handleBooking = (e: React.FormEvent, number: string) => {
+  const handleBooking = (e: React.FormEvent) => {
     e.preventDefault();
     if (!selectedTrip) return;
 
@@ -75,9 +90,10 @@ export default function Home() {
 👤 *الاسم:* ${name}
 📞 *الواتساب:* ${phone}
 👥 *عدد التذاكر:* ${passengers}
-💰 *إجمالي التكلفة:* ${selectedTrip.price * passengers} جنيه مصري`;
+💰 *إجمالي التكلفة:* ${selectedTrip.price * passengers} جنيه مصري
+💳 *تم الدفع عبر:* فودافون كاش`;
 
-    window.open(`https://wa.me/${number}?text=${encodeURIComponent(message)}`, "_blank");
+    sendToWhatsApp(message);
     setSelectedTrip(null);
     setName("");
     setPhone("");
@@ -190,7 +206,7 @@ export default function Home() {
       {/* Booking Modal */}
       {selectedTrip && (
         <div className="fixed inset-0 bg-black/80 backdrop-blur-sm flex items-center justify-center p-4 z-50">
-          <div className="bg-[#121827] border border-slate-700 rounded-3xl max-w-md w-full p-6 shadow-2xl relative">
+          <div className="bg-[#121827] border border-slate-700 rounded-3xl max-w-md w-full p-6 shadow-2xl relative max-h-[90vh] overflow-y-auto">
             
             <button
               onClick={() => setSelectedTrip(null)}
@@ -204,7 +220,7 @@ export default function Home() {
               رحلة إلى <span className="text-amber-400 font-bold">{selectedTrip.to}</span> بسعر <span className="text-emerald-400 font-bold">{selectedTrip.price} ج.م</span>
             </p>
 
-            <form onSubmit={(e) => handleBooking(e, AGENCY_WHATSAPP_NUMBER)} className="space-y-4">
+            <form onSubmit={handleBooking} className="space-y-4">
               <div>
                 <label className="block text-xs font-bold text-slate-300 mb-1.5">الاسم بالكامل</label>
                 <div className="relative">
@@ -255,6 +271,62 @@ export default function Home() {
                 <span className="text-xl font-black text-emerald-400">{selectedTrip.price * passengers} ج.م</span>
               </div>
 
+              {/* Vodafone Cash Payment Section */}
+              <div className="rounded-2xl border border-amber-500/30 bg-amber-500/5 p-4 space-y-3">
+                <div className="flex items-center gap-2 mb-1">
+                  <span className="text-lg">📲</span>
+                  <h4 className="text-sm font-black text-amber-400">الدفع عبر فودافون كاش</h4>
+                </div>
+
+                {/* Number copy card */}
+                <div className="flex items-center justify-between bg-[#0b0f19] border border-amber-500/40 rounded-xl px-4 py-3">
+                  <span className="font-mono font-black text-white tracking-widest text-base">
+                    {VODAFONE_CASH_NUMBER}
+                  </span>
+                  <button
+                    type="button"
+                    onClick={handleCopyNumber}
+                    className={`flex items-center gap-1.5 text-xs font-bold px-3 py-1.5 rounded-lg transition-all ${
+                      copied
+                        ? "bg-emerald-500/20 text-emerald-400 border border-emerald-500/40"
+                        : "bg-amber-500/10 text-amber-400 border border-amber-500/30 hover:bg-amber-500/20"
+                    }`}
+                  >
+                    {copied ? (
+                      <>
+                        <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
+                          <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
+                        </svg>
+                        تم النسخ
+                      </>
+                    ) : (
+                      <>
+                        <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                          <path strokeLinecap="round" strokeLinejoin="round" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-4 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z" />
+                        </svg>
+                        نسخ الرقم
+                      </>
+                    )}
+                  </button>
+                </div>
+
+                {/* Instructions */}
+                <ol className="space-y-1.5 text-xs text-slate-300 list-none">
+                  <li className="flex items-start gap-2">
+                    <span className="text-amber-400 font-black mt-0.5">١.</span>
+                    <span>حوّل المبلغ أو العربون على الرقم أعلاه عبر <span className="text-amber-400 font-bold">فودافون كاش</span></span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <span className="text-amber-400 font-black mt-0.5">٢.</span>
+                    <span>التقط صورة لإيصال التحويل من هاتفك</span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <span className="text-amber-400 font-black mt-0.5">٣.</span>
+                    <span>أرسل الصورة عبر <span className="text-emerald-400 font-bold">الواتساب</span> لتأكيد الحجز فور الضغط على الزر أدناه</span>
+                  </li>
+                </ol>
+              </div>
+
               <button
                 type="submit"
                 className="w-full bg-emerald-600 hover:bg-emerald-500 text-white font-bold py-3.5 rounded-xl transition shadow-lg shadow-emerald-600/20"
@@ -268,7 +340,7 @@ export default function Home() {
 
       {/* Floating WhatsApp Button */}
       <a 
-        href={`https://wa.me/${AGENCY_WHATSAPP_NUMBER}`}
+        href={`https://wa.me/${AGENCY_WHATSAPP_NUMBERS[0]}`}
         target="_blank" 
         rel="noreferrer"
         className="fixed bottom-6 left-6 z-40 bg-emerald-600 hover:bg-emerald-500 text-white p-3.5 rounded-full shadow-2xl flex items-center gap-2 transition transform hover:scale-105"
