@@ -203,7 +203,7 @@ export default function Home() {
         {/* Real Bus Background Image */}
         <div 
           className="absolute inset-0 bg-cover bg-center bg-no-repeat"
-          style={{ backgroundImage: "url('/images/hero-bg.png')" }}
+          style={{ backgroundImage: "url('/image.png')" }}
         />
         {/* Dark Overlay */}
         <div className="absolute inset-0 bg-gradient-to-b from-[#0b0f19]/70 via-[#0b0f19]/80 to-[#0b0f19] z-10" />
@@ -341,7 +341,7 @@ export default function Home() {
                 {/* Trip Image Area */}
                 <div className="relative h-44 overflow-hidden">
                   <img 
-                    src="/images/bus-vip.png" 
+                    src="/bus-vip.png" 
                     alt={trip.busType}
                     className="w-full h-full object-cover object-center group-hover:scale-110 transition-transform duration-700"
                   />
@@ -752,7 +752,8 @@ export default function Home() {
         <ArrowUpIcon className="w-5 h-5" />
       </button>
 
-      <style>{`
+      {/* Global Styles for Animations */}
+      <style jsx global>{\`
         @keyframes fade-in {
           from { opacity: 0; }
           to { opacity: 1; }
@@ -777,7 +778,7 @@ export default function Home() {
         html {
           scroll-behavior: smooth;
         }
-      `}</style>
+      \`}</style>
     </main>
   );
 }
