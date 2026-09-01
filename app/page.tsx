@@ -1,6 +1,7 @@
 "use client";
 
 import { JSX, useState } from "react";
+import Image from "next/image";
 import { 
   CheckBadgeIcon, 
   SparklesIcon, 
@@ -79,7 +80,6 @@ export default function Home() {
       trip.from.includes(searchQuery) ||
       trip.to.includes(searchQuery)
   );
-
   const handleBooking = (e: React.FormEvent) => {
     e.preventDefault();
     if (!selectedTrip) return;
@@ -128,29 +128,43 @@ export default function Home() {
       </header>
 
       {/* Hero Section */}
-      <section className="relative pt-12 pb-10 px-6 text-center max-w-4xl mx-auto">
-        <div className="inline-flex items-center gap-2 bg-amber-500/10 border border-amber-500/20 text-amber-400 text-xs font-bold px-4 py-1.5 rounded-full mb-4">
-          <SparklesIcon className="w-4 h-4" />
-          <span>مواصلين في العروض 🔥</span>
-        </div>
-        <h2 className="text-3xl md:text-5xl font-black text-white leading-tight mb-4">
-          احجز تذكرتك للسودان بأفضل الأسعار <br className="hidden sm:block"/>
-          <span className="bg-gradient-to-r from-amber-400 via-amber-300 to-yellow-500 bg-clip-text text-transparent">مع وكالة ذهب للسفريات</span>
-        </h2>
-        
-        {/* Search */}
-        <div className="mt-8 relative max-w-lg mx-auto">
-          <MagnifyingGlassIcon className="w-5 h-5 text-slate-400 absolute right-4 top-1/2 -translate-y-1/2" />
-          <input
-            type="text"
-            placeholder="ابحث عن المدينة (الخرطوم، بورتسودان، دنقلا...)"
-            value={searchQuery}
-            onChange={(e) => setSearchQuery(e.target.value)}
-            className="w-full bg-slate-900/90 border border-slate-700/70 rounded-2xl py-3.5 pr-12 pl-4 text-sm text-white placeholder-slate-500 focus:outline-none focus:border-amber-500 transition-colors shadow-xl"
-          />
+      {/* Hero Section */}
+      <section className="relative pt-16 pb-14 px-6 text-center overflow-hidden">
+        {/* Background image via Next.js Image */}
+        <Image
+          src="/images/hero-buses.jpg"
+          alt="Bus Fleet"
+          fill
+          priority
+          className="object-cover object-center"
+        />
+        {/* Dark overlay */}
+        <div className="absolute inset-0 bg-[#0b0f19]/60 z-10" />
+
+        {/* Content */}
+        <div className="relative z-20 max-w-4xl mx-auto">
+          <div className="inline-flex items-center gap-2 bg-amber-500/10 border border-amber-500/20 text-amber-400 text-xs font-bold px-4 py-1.5 rounded-full mb-4">
+            <SparklesIcon className="w-4 h-4" />
+            <span>مواصلين في العروض 🔥</span>
+          </div>
+          <h2 className="text-3xl md:text-5xl font-black text-white leading-tight mb-4">
+            احجز تذكرتك للسودان بأفضل الأسعار <br className="hidden sm:block"/>
+            <span className="bg-gradient-to-r from-amber-400 via-amber-300 to-yellow-500 bg-clip-text text-transparent">مع وكالة ذهب للسفريات</span>
+          </h2>
+
+          {/* Search */}
+          <div className="mt-8 relative max-w-lg mx-auto">
+            <MagnifyingGlassIcon className="w-5 h-5 text-slate-400 absolute right-4 top-1/2 -translate-y-1/2" />
+            <input
+              type="text"
+              placeholder="ابحث عن المدينة (الخرطوم، بورتسودان، دنقلا...)"
+              value={searchQuery}
+              onChange={(e) => setSearchQuery(e.target.value)}
+              className="w-full bg-slate-900/90 border border-slate-700/70 rounded-2xl py-3.5 pr-12 pl-4 text-sm text-white placeholder-slate-500 focus:outline-none focus:border-amber-500 transition-colors shadow-xl"
+            />
+          </div>
         </div>
       </section>
-
       {/* Trips Grid */}
       <section className="max-w-7xl mx-auto px-6 mt-4">
         <h3 className="text-xl font-bold text-slate-300 mb-6">جدول الرحلات والأسعار الحالية:</h3>
