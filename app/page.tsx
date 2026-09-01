@@ -203,7 +203,7 @@ export default function Home() {
         {/* Real Bus Background Image */}
         <div 
           className="absolute inset-0 bg-cover bg-center bg-no-repeat"
-          style={{ backgroundImage: "url('/image.png')" }}
+          style={{ backgroundImage: "url('/hero-bg.png')" }}
         />
         {/* Dark Overlay */}
         <div className="absolute inset-0 bg-gradient-to-b from-[#0b0f19]/70 via-[#0b0f19]/80 to-[#0b0f19] z-10" />
