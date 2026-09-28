@@ -751,34 +751,6 @@ export default function Home() {
       >
         <ArrowUpIcon className="w-5 h-5" />
       </button>
-
-      {/* Global Styles for Animations */}
-      <style jsx global>{\`
-        @keyframes fade-in {
-          from { opacity: 0; }
-          to { opacity: 1; }
-        }
-        @keyframes fade-in-up {
-          from { opacity: 0; transform: translateY(30px); }
-          to { opacity: 1; transform: translateY(0); }
-        }
-        @keyframes modal-in {
-          from { opacity: 0; transform: translateY(30px) scale(0.95); }
-          to { opacity: 1; transform: translateY(0) scale(1); }
-        }
-        .animate-fade-in {
-          animation: fade-in 0.5s ease forwards;
-        }
-        .animate-fade-in-up {
-          animation: fade-in-up 0.7s ease forwards;
-        }
-        .animate-modal-in {
-          animation: modal-in 0.4s ease forwards;
-        }
-        html {
-          scroll-behavior: smooth;
-        }
-      \`}</style>
     </main>
   );
 }
