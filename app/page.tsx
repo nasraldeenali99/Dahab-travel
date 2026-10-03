@@ -43,32 +43,32 @@ interface Trip {
 
 const TRIPS_DATA: Trip[] = [
   { id: "1", from: "القاهرة", to: "أرقين", price: 1200, busType: "سياحي مكيف", availableSeats: 8, features: ['تكييف', 'شاحن'] },
-  { id: "2", from: "القاهرة", to: "دنقلا", price: 2300, busType: "VIP ممتاز", availableSeats: 6, features: ['WiFi', 'تكييف', 'شاحن'], badge: "مميز" },
-  { id: "3", from: "القاهرة", to: "عطبرة", price: 2900, busType: "VIP فخم", availableSeats: 5, features: ['WiFi', 'تكييف', 'قهوة', 'شاحن'] },
-  { id: "4", from: "القاهرة", to: "أم درمان", price: 2900, busType: "VIP فخم", availableSeats: 4, features: ['WiFi', 'تكييف', 'شاحن'], badge: "الأكثر طلباً" },
-  { id: "5", from: "القاهرة", to: "الخرطوم", price: 2900, busType: "VIP فخم", availableSeats: 4, features: ['WiFi', 'تكييف', 'شاحن'] },
-  { id: "6", from: "القاهرة", to: "مدني", price: 3500, busType: "VIP فخم", availableSeats: 7, features: ['WiFi', 'تكييف', 'قهوة', 'شاحن'] },
-  { id: "7", from: "القاهرة", to: "بورتسودان", price: 3800, busType: "VIP درجة أولى", availableSeats: 3, features: ['WiFi', 'تكييف', 'قهوة', 'شاحن', 'ماء'], badge: "الأكثر طلباً" },
-  { id: "8", from: "القاهرة", to: "القضارف", price: 4200, busType: "VIP ممتاز", availableSeats: 5, features: ['WiFi', 'تكييف', 'شاحن'] },
-  { id: "9", from: "القاهرة", to: "كسلا", price: 4000, busType: "VIP ممتاز", availableSeats: 6, features: ['WiFi', 'تكييف', 'شاحن'] },
-  { id: "10", from: "القاهرة", to: "سنار", price: 4300, busType: "VIP ممتاز", availableSeats: 4, features: ['WiFi', 'تكييف', 'شاحن'], badge: "مميز" },
+  { id: "2", from: "القاهرة", to: "دنقلا", price: 2300, busType: "VIP ممتاز", availableSeats: 6, features: [ 'تكييف', 'شاحن'], badge: "مميز" },
+  { id: "3", from: "القاهرة", to: "عطبرة", price: 2700, busType: "VIP فخم", availableSeats: 5, features: [ 'تكييف', 'شاحن'] },
+  { id: "4", from: "القاهرة", to: "أم درمان", price:2700 , busType: "VIP فخم", availableSeats: 4, features: ['تكييف', 'شاحن'], badge: "الأكثر طلباً" },
+  { id: "5", from: "القاهرة", to: "الخرطوم", price: 2900, busType: "VIP فخم", availableSeats: 4, features: [ 'تكييف', 'شاحن'] },
+  { id: "6", from: "القاهرة", to: "مدني", price:3200, busType: "VIP فخم", availableSeats: 7, features: ['تكييف','شاحن'] },
+  { id: "7", from: "القاهرة", to: "بورتسودان", price: 3600, busType: "فخم VIP", availableSeats: 3, features: ['تكييف', 'شاحن' ], badge: "الأكثر طلباً" },
+  { id: "8", from: "القاهرة", to: "القضارف", price: 4000, busType: "VIP ممتاز", availableSeats: 5, features: ['تكييف', 'شاحن'] },
+  { id: "9", from: "القاهرة", to: "كسلا", price: 4000, busType: "VIP ممتاز", availableSeats: 6, features: ['تكييف', 'شاحن'] },
+  { id: "10", from: "القاهرة", to: "سنار", price: 4300, busType: "VIP ممتاز", availableSeats: 4, features: ['تكييف', 'شاحن'], badge: "مميز" },
   { id: "11", from: "القاهرة", to: "سنجة", price: 4400, busType: "سياحي مكيف", availableSeats: 5, features: ['تكييف', 'شاحن'] },
   { id: "12", from: "القاهرة", to: "الأبيض", price: 4400, busType: "سياحي مكيف", availableSeats: 6, features: ['تكييف', 'شاحن'] },
-  { id: "13", from: "القاهرة", to: "الدمازين", price: 5200, busType: "VIP ممتاز", availableSeats: 3, features: ['WiFi', 'تكييف', 'قهوة', 'شاحن'], badge: "الأكثر طلباً" },
+  { id: "13", from: "القاهرة", to: "الدمازين", price: 4500, busType: "VIP ممتاز", availableSeats: 3, features: ['تكييف','شاحن'], badge: "الأكثر طلباً" },
 ];
 
 const TESTIMONIALS = [
   {
     name: "أحمد محمد",
     location: "الخرطوم",
-    text: "رحلة ممتازة من القاهرة للخرطوم. الباص نظيف والتكييف ممتاز والسائق محترم جداً. السعر أفضل من أي وكالة تانية جربتها.",
+    text: "رحلة ممتازة من القاهرة للخرطوم الباص نظيف والتكييف ممتاز والسائق محترم جداً السعر أفضل من أي وكالة تانية جربتها.",
     rating: 5,
     avatar: "أ"
   },
   {
     name: "سارة عبدالله",
     location: "بورتسودان",
-    text: "حجزت VIP لعيلتي وكان تجربة رائعة. الواي فاي شغال ممتاز والقهوة اللي قدموها كانت لذيذة. شكراً وكالة ذهب!",
+    text: "حجزت VIP لعيلتي وكان تجربة رائعة شكراً وكالة ذهب!",
     rating: 5,
     avatar: "س"
   },
@@ -85,7 +85,7 @@ const FEATURES = [
   { icon: "❄️", title: "تكييف ممتاز", desc: "أحدث أنظمة التكييف لرحلة مريحة في كل الأوقات" },
   { icon: "📶", title: "واي فاي مجاني", desc: "اتصال إنترنت عالي السرعة طوال الرحلة" },
   { icon: "🔌", title: "شواحن USB", desc: "منافذ شحن لكل راكب حتى لا تنقطع بطاريتك" },
-  { icon: "☕", title: "ضيافة متميزة", desc: "مشروبات ساخنة وباردة وماء معدني مجاناً" },
+  { icon: "☕", title: "ضيافة متميزة", desc: "" },
   { icon: "🛡️", title: "أمان تام", desc: "سائقون محترفون وباصات مجهزة بأنظمة السلامة" },
   { icon: "💰", title: "أفضل الأسعار", desc: "أسعار تنافسية مع عروض خاصة للمجموعات" },
 ];
@@ -203,7 +203,7 @@ export default function Home() {
         {/* Real Bus Background Image */}
         <div 
           className="absolute inset-0 bg-cover bg-center bg-no-repeat"
-          style={{ backgroundImage: "url('/hero-bg.png')" }}
+          style={{ backgroundImage: "url('/images/hero-bg.png')" }}
         />
         {/* Dark Overlay */}
         <div className="absolute inset-0 bg-gradient-to-b from-[#0b0f19]/70 via-[#0b0f19]/80 to-[#0b0f19] z-10" />
@@ -341,7 +341,7 @@ export default function Home() {
                 {/* Trip Image Area */}
                 <div className="relative h-44 overflow-hidden">
                   <img 
-                    src="/bus-vip.png" 
+                    src="/images/bus-vip.png" 
                     alt={trip.busType}
                     className="w-full h-full object-cover object-center group-hover:scale-110 transition-transform duration-700"
                   />
@@ -751,6 +751,33 @@ export default function Home() {
       >
         <ArrowUpIcon className="w-5 h-5" />
       </button>
+
+      <style>{`
+        @keyframes fade-in {
+          from { opacity: 0; }
+          to { opacity: 1; }
+        }
+        @keyframes fade-in-up {
+          from { opacity: 0; transform: translateY(30px); }
+          to { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes modal-in {
+          from { opacity: 0; transform: translateY(30px) scale(0.95); }
+          to { opacity: 1; transform: translateY(0) scale(1); }
+        }
+        .animate-fade-in {
+          animation: fade-in 0.5s ease forwards;
+        }
+        .animate-fade-in-up {
+          animation: fade-in-up 0.7s ease forwards;
+        }
+        .animate-modal-in {
+          animation: modal-in 0.4s ease forwards;
+        }
+        html {
+          scroll-behavior: smooth;
+        }
+      `}</style>
     </main>
   );
 }
